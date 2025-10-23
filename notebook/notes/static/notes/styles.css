@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+nav {
+    background-color: #333;
+    padding: 12px 20px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left,
+.nav-auth {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-auth span {
+    color: #fff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #555;
+}
+
+.nav-logo {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.logo {
+    width: 350px;
+    height: auto;
+}
+
+.content {
+    background-color: #fff;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 32px;
+    color: #222;
+    margin-bottom: 25px;
+}
+
+.content h2 {
+    font-size: 26px;
+    margin: 40px 0 20px;
+    color: #222;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #333;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.content p {
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 12px 18px;
+    text-align: left;
+}
+
+.note {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 20px 0;
+    background-color: #fafafa;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-attributes {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.note-attributes p {
+    margin: 8px 0;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 40px;
+    font-size: 14px;
+    border-top: 3px solid #222;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.wide-input {
+    width: 500px;
+    height: 150px;
+    padding: 8px;
+    font-size: 16px;
+}

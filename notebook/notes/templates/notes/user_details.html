@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+{% block title %} Пользователь {{details_user.name}} {% endblock %}
+
+{% block content %}
+
+<p><strong>Имя: {{details_user.username}}</strong></p>
+<p><strong>email: </strong>{{details_user.email}}</p>
+<p><strong>Биография: </strong>{{details_userprofile.bio}}</p>
+<p><strong>Дата рождения: </strong>{{details_userprofile.birth_date}}</p>
+
+
+{% for note in notes_list%}
+    <p><strong>Заметка: </strong>{{note.text}}</p>
+    <p><strong>Статус заметки: </strong>{{note.status__name}}</p>
+{%endfor%}
+
+{% if user.is_authenticated %}
+    <a href="{% url 'users:password_reset' %}"><button>Изменить пароль</button></a>
+{% endif %}
+
+{% endblock%}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content%}
+{% if user.is_authenticated %}
+  <form action="{% url 'logout' %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Выйти</button>
+  </form>
+{% else %}
+  <a href="{% url 'login' %}">Войти</a>
+{% endif %}
+
+
+{% endblock %}

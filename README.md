@@ -87,3 +87,38 @@ note_app/
 ├── Dockerfile
 └── .env.example
 ```
+## Инструкция по запуску проекта
+
+### Скачайте репозиторий
+- git clone https://github.com/<your_username>/solva-notes-admin-Shaken-Dan.git
+
+### Запустите Docker
+- docker compose up --build
+
+### Сделайте миграцию БД
+- docker compose exec web python manage.py migrate
+
+### Создайте пользователя (укажите имя и пароль)
+- docker compose exec web python manage.py createsuperuser
+
+### Загрузите фикстуры 
+- docker compose exec web python manage.py loaddata initial_data.json 
+
+### Главная страница: список всех заметок
+- http://localhost:8000
+
+### Регистрация нового пользователя
+- http://127.0.0.1:8000/auth/register/
+
+### Логин пользователя
+- http://127.0.0.1:8000/auth/login/
+
+### Пользователь после регистрации может изменить свой пароль
+- http://127.0.0.1:8000/auth/password-reset
+
+### Пользователь может создавать новые заметки и редактировать имеющиеся, чужие редактировать не может
+
+
+
+#### Автор 
+Shaken-Dan Bolatuly

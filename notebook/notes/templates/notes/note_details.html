@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{%load static%}
+
+{% block title %} Заметка {{details.id }} {% endblock %}
+
+{% block content %}
+    {% if details %}
+        <p><strong>Заметка:</strong> {{details.text}}</p>
+        <p> <strong>Имя:</strong> {{details.author.name}}</p>
+        <p><strong>Имэил: </strong>{{details.author.email}}</p>
+        <p><strong>Биография: </strong>{{details.author.userprofile.bio}}</p>
+        <p><strong>Дата рождения: </strong>{{details.author.userprofile.birth_date}}</p>
+        {%if details.status == "Закрыто"%}
+            <p><strong>Статус</strong> финальный</p>
+        {%else%}
+            <p><strong>Статус: </strong> {{details.status}}</p>
+        {%endif%}
+        <p><strong>Категории</strong>:
+        {% for cat in details.categories.all %}
+            {{ cat.title }}
+        {% empty %}
+            Нет категорий
+        {% endfor %}
+        </p>
+
+        {% if user.is_authenticated and user == details.author or user.is_staff or user.is_superuser %}
+            <form action="{% url 'notes:edit_note' details.id %}" method="get">
+                <button type="submit">Редактировать</button>
+            </form>
+
+            <form action="{% url 'notes:delete_note' details.id %}" method="post" style="display: inline;" onsubmit="return confirm('Вы уверены, что хотите удалить эту заметку?');">
+                {% csrf_token %}
+                <button type="submit">Удалить</button>
+            </form>
+
+        {% elif user.is_authenticated %}
+            <p><em>Только автор или администратор может редактировать/удалять эту заметку.</em></p>
+        {% else %}
+            <p>Доступ запрещен</p>
+        {% endif %}
+
+    {% else %}
+        <p>Заметка не найдена.</p>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Удалить Заметку {% endblock %}
+
+{% block content %}
+
+    <h2>Удаление заметки</h2>
+    <p>Точно удалить заметку?</p>
+
+    <form action="{% url 'notes:delete_note' note_id%}" method="post">
+        {% csrf_token %}
+        <button type="submit">Удалить</button>
+    </form>
+    <a href="{% url 'notes:home' %}"><button>Отмена</button></a>
+
+{% endblock %}
+
