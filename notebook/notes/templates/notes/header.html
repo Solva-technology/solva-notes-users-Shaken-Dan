@@ -1,0 +1,27 @@
+<header class="header">
+    <nav class="nav">
+        <div class="nav-right">
+            <div class="nav-left">
+                <a href="{% url 'notes:home' %}" class="nav-link">Главная</a>
+            </div>
+
+            <div class="nav-auth">
+                {% if user.is_authenticated %}
+                    <span>Привет, {{ user.username }}</span>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link">
+                            Выйти
+                        </button>
+                    </form>
+                    <a href="{% url 'notes:add_note' %}" class="nav-link">Добавить заметку</a>
+                    <a href="{% url 'notes:user_all_notes' user_id=user.id %}" class="nav-link">Мои заметки</a>
+                    <a href="{% url 'notes:user_details' user_id=user.id %}" class="nav-link">Мой кабинет</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="nav-link">Войти</a>
+                    <a href="{% url 'users:register' %}" class="nav-link">Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>Привет, здесь заметки о фильме «Другой мир».</h1>
+
+    <div class="nav-logo">
+        <img src="{% static 'notes/logo.png' %}" alt="Logo" class="logo">
+    </div>
+
+    {% if notes %}
+        {% for note in notes %}
+            <div class="note">
+                <h3> <a href="{% url 'notes:note_details' note.id %}"> Заметка {{ note.id }} </a></h3>
+                <p><strong>Текст:</strong> {{ note.text|truncatechars:100 }}</p>
+
+                <div class="note-attributes">
+                    <p><strong>Автор:</strong> {{ note.author.name }}</p>
+                    <p><strong>Статус:</strong> {{ note.status.name }}</p>
+                    <p><strong>Категории:</strong>
+                        {% if note.categories.all %}
+                            {% for category in note.categories.all %}
+                                {{ category.title }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            Нет категорий
+                        {% endif %}
+                    </p>
+                    <p><strong>Дата создания:</strong> {{ note.created_at|date:"d.m.Y H:i" }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="empty-message">Заметок пока нет.</p>
+    {% endif %}
+</div>
+{% endblock %}

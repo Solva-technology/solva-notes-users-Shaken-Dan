@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Заметки о фильме Другой Мир {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'notes/styles.css' %}">
+</head>
+<body>
+    {% include 'notes/header.html' %}
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    {% include 'notes/footer.html' %}
+
+</body>
+</html>
